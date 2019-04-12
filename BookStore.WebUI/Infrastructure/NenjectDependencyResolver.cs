@@ -3,9 +3,9 @@ using Ninject;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
-using BookStore.BookStore.Domain.Entities;
-
-
+using BookStore.Domain.Abstract;
+using BookStore.Domain.Entities;
+using BookStore.Domain.Concrete;
 
 namespace AS_MVC.Infrastructure
 {
@@ -23,7 +23,8 @@ namespace AS_MVC.Infrastructure
 
         private void AddBindings()
         {
-            Kernel.Bind<IBookRepository>().To<book>();
+
+            Kernel.Bind<IBookRepository>().To<EFBookRepository>();
             //Kernel.Bind<IDiscountHelper>().To<DefaultDiscountHelper>().WithConstructorArgument("discountParam",50m) ;
             //Kernel.Bind<IDiscountHelper>().To<FlexableDiscountHelper>().WhenInjectedInto<LinqValueCalculator>();
 

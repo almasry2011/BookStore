@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BookStore.Domain.Abstract;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,16 @@ namespace BookStore.WebUI.Controllers
 {
     public class HomeController : Controller
     {
+        private IBookRepository repo;
+        public HomeController(IBookRepository repoParam)
+        {
+            repo = repoParam;
+        }
+
         public ActionResult Index()
         {
-            return View();
+
+            return View(repo.Books);
         }
 
         public ActionResult About()
