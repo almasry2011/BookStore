@@ -9,58 +9,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
 
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Book.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Book.Titel)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Book.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Book.Specialization)
-        </th>
-        <th></th>
-    </tr>
+@Html.Partial("_BOOKLIST")
 
-
-    @foreach (var item in Model.Books)
-    {
-
-
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Titel)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Specialization)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ISBN }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ISBN }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ISBN })
-
-
-            </td>
-        </tr>
-    }
-    
-    <tr >
-        <td class="row" colspan="5">
-            @for (int i = 1; i < Model.PagingInfo.TotalPages; i++)
-            {
-                <a   href="/BookListPage/@i">   Page @i   </a>
-            }
-        </td>
-    </tr>
-</table>
+ 

@@ -1,0 +1,35 @@
+﻿@model BookStore.WebUI.Models.BookListViewModel
+
+@{
+    ViewBag.Title = "Book list";
+}
+
+
+<h2>Book list</h2>
+
+@foreach (var item in Model.Books)
+{
+    <div>
+        <h3>
+            <strong class="text-primary"> @item.Titel  </strong>
+            <span class="pull-right label label-primary">@item.Price.ToString("c") </span>
+        </h3>
+
+        <span class="lead">@item.Description</span>
+
+    </div>
+    
+
+}
+
+    <div class="btn-group-xm pull-right">
+        @for (int i = 1; i < Model.PagingInfo.TotalPages; i++)
+        {
+            <a class="btn btn-xs btn-primary " href="/BookListPage/@i">   Page @i   </a>
+        }
+
+    </div>
+
+
+
+

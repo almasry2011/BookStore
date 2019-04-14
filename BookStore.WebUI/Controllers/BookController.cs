@@ -10,7 +10,7 @@ namespace BookStore.WebUI.Controllers
 {
     public class BookController : Controller
     {
-        public int PageSize = 2;
+        public int PageSize = 3;
         private IBookRepository repo;
         public BookController(IBookRepository repoParam)
         {
