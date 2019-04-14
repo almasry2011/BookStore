@@ -1,4 +1,5 @@
 ﻿using BookStore.Domain.Abstract;
+using BookStore.WebUI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +8,11 @@ using System.Web.Mvc;
 
 namespace BookStore.WebUI.Controllers
 {
-    public class HomeController : Controller
+    public class BookController : Controller
     {
         public int PageSize = 2;
         private IBookRepository repo;
-        public HomeController(IBookRepository repoParam)
+        public BookController(IBookRepository repoParam)
         {
             repo = repoParam;
         }
@@ -27,11 +28,20 @@ namespace BookStore.WebUI.Controllers
             //2-per Page
             //(2-1)*2=2
             //(3-1)*2=4
-            return View("listall",repo.Books
-                .OrderBy(b=>b.ISBN) 
-                .Skip((page-1)* PageSize)
+            BookListViewModel m = new BookListViewModel
+            {
+                PagingInfo = new PagingInfo { CurrentPage = page, ItemsPerPages = PageSize, TotalItems = repo.Books.Count() },
+
+                Books = repo.Books.OrderBy(b => b.ISBN)
+                .Skip((page - 1) * PageSize)
                 .Take(PageSize)
-                );
+            };
+
+
+            return View("listall",m );
+
+
+
         }
 
 

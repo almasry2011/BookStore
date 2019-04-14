@@ -62,6 +62,10 @@
     <Compile Include="Migrations\201904140612424_PopulateBooks.Designer.cs">
       <DependentUpon>201904140612424_PopulateBooks.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904140809287_PopulateBooks1.cs" />
+    <Compile Include="Migrations\201904140809287_PopulateBooks1.Designer.cs">
+      <DependentUpon>201904140809287_PopulateBooks1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -75,6 +79,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904140612424_PopulateBooks.resx">
       <DependentUpon>201904140612424_PopulateBooks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904140809287_PopulateBooks1.resx">
+      <DependentUpon>201904140809287_PopulateBooks1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

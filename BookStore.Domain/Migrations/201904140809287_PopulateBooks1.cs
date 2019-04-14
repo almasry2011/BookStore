@@ -3,7 +3,7 @@ namespace BookStore.Domain.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class PopulateBooks : DbMigration
+    public partial class PopulateBooks1 : DbMigration
     {
         public override void Up()
         {
@@ -27,7 +27,7 @@ namespace BookStore.Domain.Migrations
 
             Sql("INSERT INTO Books (Price, Titel,Description,Specialization)VALUES" +
             "(10,'101 LINQ Query', '101 LINQ Query From Scratch', 'LINQ')");
-              
+
             Sql("INSERT INTO Books (Price, Titel,Description,Specialization)VALUES" +
             "(10,'Python', 'Python From Scratch', 'Python')");
 
