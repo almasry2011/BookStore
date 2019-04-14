@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <IntermediateOutputPath>C:\Users\AFF6E~1.MOH\AppData\Local\Temp\vs7125.tmp\Debug\</IntermediateOutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <IntermediateOutputPath>C:\Users\AFF6E~1.MOH\AppData\Local\Temp\vs7125.tmp\Release\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -56,6 +58,10 @@
     <Compile Include="Migrations\201904121730510_FirstMigration.Designer.cs">
       <DependentUpon>201904121730510_FirstMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904140612424_PopulateBooks.cs" />
+    <Compile Include="Migrations\201904140612424_PopulateBooks.Designer.cs">
+      <DependentUpon>201904140612424_PopulateBooks.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -66,6 +72,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201904121730510_FirstMigration.resx">
       <DependentUpon>201904121730510_FirstMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904140612424_PopulateBooks.resx">
+      <DependentUpon>201904140612424_PopulateBooks.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
