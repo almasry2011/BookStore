@@ -13,23 +13,29 @@ namespace BookStore.WebUI
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute(
+                name: "Paging",
+                url: "BookListPage/{page}",
+                defaults: new { controller = "book", action = "list", page = UrlParameter.Optional });
+
+
 
             routes.MapRoute(
-                     null, "{page}", new
+                     null, "{page}",
+       
+                     new
                      {
                          controller = "book",
                          action = "ListAll",
-                         page = UrlParameter.Optional
-                     }
+                         page = UrlParameter.Optional 
+                     }     ,
+                        new { page = @"\d+" }         // The regular expression \d + matches one or more integers.
                       );
 
 
 
-            routes.MapRoute(
-           name: "Paging",
-           url: "BookListPage/{page}",
-           defaults: new { controller = "book", action = "list", page = UrlParameter.Optional }
-       );
+           
+   
 
 
 
