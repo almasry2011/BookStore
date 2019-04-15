@@ -7,9 +7,14 @@
 
 <h2>Book list</h2>
 
+<br />
+<span class="label label-primary">@Model.SearchPagesNumber</span>
+ 
+
+<br />
 @foreach (var item in Model.Books)
 {
-    <div>
+    <div class="well">
         <h3>
             <strong class="text-primary"> @item.Titel  </strong>
             <span class="pull-right label label-primary">@item.Price.ToString("c") </span>
@@ -18,15 +23,38 @@
         <span class="lead">@item.Description</span>
 
     </div>
-    
+
 
 }
 
     <div class="btn-group-xm pull-right">
-        @for (int i = 1; i < Model.PagingInfo.TotalPages; i++)
-        {
-            <a class="btn btn-xs btn-primary " href="/BookListPage/@i">   Page @i   </a>
+        @{
+
+            if (ViewBag.listall == "list")
+            {
+                for (int i = 1; i < Model.PagingInfo.TotalPages; i++)
+                {
+                    @Html.ActionLink(i.ToString(), null,null, new { page = @i }, new { @class = "btn btn-xs btn-primary" });
+                }
+            }
+
+            else if (Model.SearchPagesNumber > 0)
+            {
+                       for (int j = 1; j < Model.SearchPagesNumber; j++)
+                       {
+                    @Html.ActionLink(j.ToString(), null, null, new { specialization = Model.CurrentSpecilization, page = @j },
+                                                                                    new { @class = "btn btn-xs btn-primary " });
+                       }   
+            }
+
+            else
+            {
+                  //For Future Customization
+            }
+
         }
+
+
 
     </div>
 

@@ -17,24 +17,44 @@ namespace BookStore.WebUI.Controllers
             repo = repoParam;
         }
 
-        public ActionResult ListAll()
+        public ActionResult ListAll(int page = 1)
         {
+            BookListViewModel m = new BookListViewModel
+            {
+                PagingInfo = new PagingInfo { CurrentPage = page, ItemsPerPages = PageSize, TotalItems = repo.Books.Count() },
+                Books = repo.Books.OrderBy(b => b.ISBN)
+                    .Skip((page - 1) * PageSize)
+                    .Take(PageSize),     CurrentSpecilization="5"
 
-            return View(repo.Books);
+            };
+            ViewBag.listall = "list";
+
+            return View("listall", m);
         }
 
-        public ActionResult List(int page=1)
+
+
+            public ActionResult List(string specialization, int page=1)
         {
             //2-per Page
             //(2-1)*2=2
             //(3-1)*2=4
+
+            var x = repo.Books.Where(b => b.Specialization == specialization).Skip((page-1)*PageSize).Take(PageSize) .Count()   ;
+
             BookListViewModel m = new BookListViewModel
             {
                 PagingInfo = new PagingInfo { CurrentPage = page, ItemsPerPages = PageSize, TotalItems = repo.Books.Count() },
 
                 Books = repo.Books.OrderBy(b => b.ISBN)
+                .Where(b => b.Specialization == null || b.Specialization == specialization)
                 .Skip((page - 1) * PageSize)
-                .Take(PageSize)
+                .Take(PageSize),
+                CurrentSpecilization = specialization,
+
+                SearchPagesNumber = x
+
+
             };
 
 

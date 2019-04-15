@@ -12,5 +12,7 @@ namespace BookStore.WebUI.Models
         public Book Book { get; set; }
 
         public PagingInfo PagingInfo { get; set; }
+        public string CurrentSpecilization { get; set; }
+        public int SearchPagesNumber { get; set; }
     }
 }

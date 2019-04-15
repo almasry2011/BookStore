@@ -13,11 +13,67 @@ namespace BookStore.WebUI
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+
             routes.MapRoute(
-              name: "Paging",
-              url: "BookListPage/{page}",
-              defaults: new { controller = "book", action = "list", page = UrlParameter.Optional }
-          );
+                     null, "{page}", new
+                     {
+                         controller = "book",
+                         action = "ListAll",
+                         page = UrlParameter.Optional
+                     }
+                      );
+
+
+
+            routes.MapRoute(
+           name: "Paging",
+           url: "BookListPage/{page}",
+           defaults: new { controller = "book", action = "list", page = UrlParameter.Optional }
+       );
+
+
+
+
+            routes.MapRoute(
+                       null, "{specialization}", new
+                       {
+                           controller = "book",
+                           action = "list",
+                           page = UrlParameter.Optional
+                       }
+                       );
+
+            routes.MapRoute(
+                    null, "{specialization}/{page}", new
+                    {
+                       controller = "book",
+                       action = "list",
+                       page = UrlParameter.Optional
+                    }
+                    );
+
+
+
+            routes.MapRoute(
+                       null,"" , new { controller = "book",
+                           action = "listall",
+                           specialization =(string)null,
+                            page = UrlParameter.Optional }
+                        );
+
+
+   
+
+            
+
+
+          
+
+
+
+
+
+         
 
 
             routes.MapRoute(
