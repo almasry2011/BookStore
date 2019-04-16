@@ -40,7 +40,7 @@ namespace BookStore.WebUI.Controllers
             //2-per Page
             //(2-1)*2=2
             //(3-1)*2=4
-
+            ViewBag.spec = specialization;
             var x = repo.Books.Where(b => b.Specialization == specialization).Skip((page-1)*PageSize).Take(PageSize) .Count()   ;
 
             BookListViewModel m = new BookListViewModel
@@ -55,7 +55,6 @@ namespace BookStore.WebUI.Controllers
 
                 SearchPagesNumber = x,
                 SpecializationColl = repo.Books.Select(b => b.Specialization).Distinct()
-
 
             };
 

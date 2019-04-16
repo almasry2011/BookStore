@@ -1,0 +1,29 @@
+﻿
+@model  BookStore.WebUI.Models.BookListViewModel
+
+<div class="list-group">
+
+    @{
+        foreach (var item in Model.SpecializationColl)
+        {
+            if (item == ViewBag.spec)
+            {
+                <a href="/@item " class="list-group-item list-group-item-action active">@item</a>
+            }
+            else
+            {
+                <a href="/@item " class="list-group-item list-group-item-action">@item</a>
+
+            }
+
+
+
+        }
+
+    }
+
+</div>
+
+
+
+
