@@ -53,6 +53,7 @@
     <Compile Include="Abstract\IBookRepository.cs" />
     <Compile Include="Concrete\EFBookRepository.cs" />
     <Compile Include="Concrete\EFDbcontext.cs" />
+    <Compile Include="Entities\Cart.cs" />
     <Compile Include="Entities\MyEntities.cs" />
     <Compile Include="Migrations\201904121730510_FirstMigration.cs" />
     <Compile Include="Migrations\201904121730510_FirstMigration.Designer.cs">
