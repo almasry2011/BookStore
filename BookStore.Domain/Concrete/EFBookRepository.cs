@@ -14,5 +14,14 @@ namespace BookStore.Domain.Concrete
     {
         EFDbcontext db = new EFDbcontext();
         public IEnumerable<Book> Books => db.Books.ToList();
+
+
+       
+
+        public IEnumerable<Book> SpecializationColl()
+        {
+           var x = db.Books.Select(b => b.Specialization).Distinct();
+            return (IEnumerable<Book>) x;
+        }
     }
 }

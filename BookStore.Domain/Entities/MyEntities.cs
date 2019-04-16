@@ -17,7 +17,6 @@ namespace BookStore.Domain.Entities
             public string Titel { get; set; }
             public string Description { get; set; }
             public string Specialization { get; set; }
-           
 
         }
 

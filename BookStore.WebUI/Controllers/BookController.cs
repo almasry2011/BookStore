@@ -24,7 +24,8 @@ namespace BookStore.WebUI.Controllers
                 PagingInfo = new PagingInfo { CurrentPage = page, ItemsPerPages = PageSize, TotalItems = repo.Books.Count() },
                 Books = repo.Books.OrderBy(b => b.ISBN)
                     .Skip((page - 1) * PageSize)
-                    .Take(PageSize),     CurrentSpecilization="5"
+                    .Take(PageSize),
+                 SpecializationColl = repo.Books.Select(b => b.Specialization).Distinct()
 
             };
             ViewBag.listall = "list";
@@ -52,7 +53,8 @@ namespace BookStore.WebUI.Controllers
                 .Take(PageSize),
                 CurrentSpecilization = specialization,
 
-                SearchPagesNumber = x
+                SearchPagesNumber = x,
+                SpecializationColl = repo.Books.Select(b => b.Specialization).Distinct()
 
 
             };
@@ -65,12 +67,17 @@ namespace BookStore.WebUI.Controllers
         }
 
 
-        public ActionResult About()
+        public ActionResult Menu()
         {
-            ViewBag.Message = "Your application description page.";
+        
 
-            return View();
+            BookListViewModel m = new BookListViewModel
+            {
+               SpecializationColl = repo.Books.Select(b => b.Specialization ).Distinct()
+            };
+            return PartialView( "_CustomNav",m);
         }
+
 
         public ActionResult Contact()
         {

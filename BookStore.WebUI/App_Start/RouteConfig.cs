@@ -12,34 +12,29 @@ namespace BookStore.WebUI
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
+                
+            //localhost:xxxx
             routes.MapRoute(
-                name: "Paging",
-                url: "BookListPage/{page}",
-                defaults: new { controller = "book", action = "list", page = UrlParameter.Optional });
+                       null, "", new
+                       {
+                           controller = "book",
+                           action = "ListAll",
+                       });
 
-
-
+            //localhost:xxxx/3
             routes.MapRoute(
                      null, "{page}",
-       
+
                      new
                      {
                          controller = "book",
                          action = "ListAll",
-                         page = UrlParameter.Optional 
-                     }     ,
+                         page = UrlParameter.Optional
+                     },
                         new { page = @"\d+" }         // The regular expression \d + matches one or more integers.
                       );
-
-
-
-           
-   
-
-
-
-
+ 
+            //localhost:xxxx/Programming
             routes.MapRoute(
                        null, "{specialization}", new
                        {
@@ -49,39 +44,19 @@ namespace BookStore.WebUI
                        }
                        );
 
+            //localhost:xxxx/Programming/2
             routes.MapRoute(
                     null, "{specialization}/{page}", new
                     {
-                       controller = "book",
-                       action = "list",
-                       page = UrlParameter.Optional
-                    }
+                        controller = "book",
+                        action = "list",
+                        page = UrlParameter.Optional
+                    }, 
+                    new { page = @"\d+" }
                     );
 
-
-
-            routes.MapRoute(
-                       null,"" , new { controller = "book",
-                           action = "listall",
-                           specialization =(string)null,
-                            page = UrlParameter.Optional }
-                        );
-
-
-   
-
-            
-
-
-          
-
-
-
-
-
-         
-
-
+                       
+                       
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
