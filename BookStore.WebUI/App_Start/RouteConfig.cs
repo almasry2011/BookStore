@@ -12,7 +12,29 @@ namespace BookStore.WebUI
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-                
+
+
+
+            //localhost:xxxx/Programming
+            //routes.MapRoute(
+            //           null, "scart/{returnURL}/{cart}", new
+            //           {
+            //               controller = "cart",
+            //               action = "index",
+            //               cart = Equals("cart", "scart0")
+
+            //           });
+
+            //localhost:xxxx/Programming
+            routes.MapRoute(
+                       null, "{specialization}", new
+                       {
+                           controller = "book",
+                           action = "list",
+                       });
+
+
+
             //localhost:xxxx
             routes.MapRoute(
                        null, "", new
@@ -34,15 +56,7 @@ namespace BookStore.WebUI
                         new { page = @"\d+" }         // The regular expression \d + matches one or more integers.
                       );
  
-            //localhost:xxxx/Programming
-            routes.MapRoute(
-                       null, "{specialization}", new
-                       {
-                           controller = "book",
-                           action = "list",
-                           page = UrlParameter.Optional
-                       }
-                       );
+      
 
             //localhost:xxxx/Programming/2
             routes.MapRoute(

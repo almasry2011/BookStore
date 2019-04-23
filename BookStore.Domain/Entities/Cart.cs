@@ -17,7 +17,7 @@ namespace BookStore.Domain.Entities
                         {
                             CartList.Add(new CartLine { Book=book,Quantity=quantity});
                         }
-                    else
+                        else
                         {
                         line.Quantity += quantity;
                         }
@@ -36,13 +36,9 @@ namespace BookStore.Domain.Entities
                     CartList.Clear();
                 }
 
-                public IEnumerable<CartLine> Lines ()
-                {
-                    return CartList.ToList();
+                public IEnumerable<CartLine> Lines { get { return CartList; }  }
+
                 }
-
-
-    }
 
         public class CartLine
         {

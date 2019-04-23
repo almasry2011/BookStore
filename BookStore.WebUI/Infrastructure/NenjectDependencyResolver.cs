@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using BookStore.Domain.Abstract;
 using BookStore.Domain.Entities;
 using BookStore.Domain.Concrete;
+using System.Configuration;
 
 namespace AS_MVC.Infrastructure
 {
@@ -24,7 +25,16 @@ namespace AS_MVC.Infrastructure
         private void AddBindings()
         {
 
+           // EmailSettings emailSettings = new EmailSettings
+          //  {WriteAsFile = bool.Parse(ConfigurationManager.AppSettings["Email.WriteAsFile"]?? "false") };
+
+
             Kernel.Bind<IBookRepository>().To<EFBookRepository>();
+            Kernel.Bind<IOrderProcessor>().To<SendEmail>();
+
+
+
+
             //Kernel.Bind<IDiscountHelper>().To<DefaultDiscountHelper>().WithConstructorArgument("discountParam",50m) ;
             //Kernel.Bind<IDiscountHelper>().To<FlexableDiscountHelper>().WhenInjectedInto<LinqValueCalculator>();
 

@@ -1,0 +1,16 @@
+﻿@model BookStore.WebUI.Models.CartViewModel
+<div id="navstatus0212" class="navbar-right">
+    <b class="glyphicon glyphicon-shopping-cart">Your Cart Have</b>
+    @Model.cart.Lines.Sum(x => x.Quantity) Book(s), Total Price :
+    @Model.cart.ComputeTotalPrice().ToString("c")
+    @Html.ActionLink("Checkout", "Checkout", "cart"
+      , new { returnURL = Request.Url.PathAndQuery }
+      , new {@class = "btn btn-xs btn-warning navbar-btn"  }
+    )
+
+    @Html.ActionLink("Cart", "S_CartList", "cart"
+   , new { returnURL = Request.Url.PathAndQuery }
+   , new {@class = "btn btn-xs btn-warning navbar-btn"  }
+ )
+
+</div>

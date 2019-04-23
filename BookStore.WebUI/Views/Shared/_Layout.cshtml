@@ -6,6 +6,15 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+        .navbar-right {
+            margin-right: 30px;
+            float: right !important;
+        }
+    </style>
+
+
 </head>
 <body>
 
@@ -13,6 +22,9 @@
     <div id="posts-wrapper"></div>
 
     @Html.Partial("_CustomNav")
+    @*@Html.Action("CartSummerty", "cart")*@
+
+
     <div class="container body-content">
         @RenderBody()
         <hr />
@@ -22,6 +34,8 @@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryE")
+    
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

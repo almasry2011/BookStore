@@ -1,0 +1,50 @@
+﻿@model BookStore.WebUI.Models.CartViewModel
+<link href="../Content/bootstrap.css" rel="stylesheet" />
+<div class="container  ">
+    <div class="row">
+
+        <hr />
+        <div class="well text-center">
+            New Order Has Been Shipped     <div />
+
+            <hr />
+            <table class="table table-striped" style=" ">
+                <thead>
+
+                    <tr>
+                        <td style="color:red"> BookTitel</td>
+                        <td>  Quantity</td>
+                        <td>  Book.Price </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.cart.Lines)
+                    {
+                        <tr>
+                            <td>@item.Book.Titel BookTitel</td>
+                            <td>@item.Quantity  Quantity</td>
+                            <td>  @Model.cart.ComputeTotalPrice() </td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3" class="text-center"> shippingDetails </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <table class="table table-striped">
+                                <tr><td style="width:70px;">  Name</td>     <td>  Name</td></tr>
+                                <tr><td style="width:70px;"> Line1</td>      <td> Line1</td></tr>
+                                <tr><td style="width:70px;">  City   </td>     <td>  City   </td></tr>
+                                <tr><td style="width:70px;"> Country</td>  <td>  Country </td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+
+</div>

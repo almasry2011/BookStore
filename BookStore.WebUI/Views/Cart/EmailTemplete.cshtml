@@ -1,0 +1,56 @@
+﻿
+@model BookStore.WebUI.Models.CartViewModel
+
+
+
+<link href="../Content/bootstrap.css" rel="stylesheet" />
+<div class="container  ">
+    <div class="row">
+
+        <hr />
+        <div class="well text-center">
+            New Order Has Been Shipped     <div />
+
+            <hr />
+            <table class="table table-striped" style=" ">
+                <thead>
+
+                    <tr>
+                        <td style="color:red"> BookTitel</td>
+                        <td>  Quantity</td>
+                        <td>  Book.Price </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.cart.Lines)
+                    {
+                        <tr>
+                            <td>@item.Book.Titel </td>
+                            <td>@item.Quantity </td>
+                            <td>    @(decimal.Multiply(@item.Quantity, @item.Book.Price).ToString("c"))    </td>
+                        </tr>
+                    }
+
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3" class="text-center"> shippingDetails </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <table class="table table-striped">
+                                <tr><td style="width:70px;">  Name</td>      <td>  @Model.ShippingDetails.Name</td></tr>
+                                <tr><td style="width:70px;"> Line1</td>       <td> @Model.ShippingDetails.Line1</td></tr>
+                                <tr><td style="width:70px;">  City   </td>      <td>  @Model.ShippingDetails.City   </td></tr>
+                                <tr><td style="width:70px;"> Country</td>   <td>  @Model.ShippingDetails.Country </td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+    @{Model.cart.Clear(); }
+</div>

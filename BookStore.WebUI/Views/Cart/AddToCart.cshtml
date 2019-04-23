@@ -1,0 +1,63 @@
+﻿@model BookStore.WebUI.Models.CartViewModel
+
+
+@foreach (var item in Model.cart.Lines)
+{
+    @item.Book.Titel
+}
+
+<div class="container">
+    <div class="row">
+
+
+
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.cart.Lines)
+                {
+                    <tr>
+                        <td> @item.Book.Titel</td>
+                        <td> @item.Book.Price.ToString("c")</td>
+                        <td> @item.Quantity</td>
+                        <td> @((item.Quantity * item.Book.Price).ToString("c") )</td>
+                        <td style="width: 20px;">
+                            @using (Html.BeginForm("Remove_From_Cart", "Cart"))
+                            {
+                                @Html.HiddenFor(b => item.Book.ISBN, new { Name = "ISBN" })
+                                @Html.Hidden("returnURL", Request.Url.PathAndQuery)
+                                <input class="btn btn-warning btn-sm" type="submit" value="Remove From Cart" />
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3" class="text-center"> Total: </td>
+                    <td class="">@Model.cart.ComputeTotalPrice().ToString("c")</td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <div class="text-center btn-group-sm">
+            <a class="btn btn-primary" href="/">Continue Shopping</a>
+
+            @Html.ActionLink("Checkout Now", "checkout", "cart", new { @class = "btn  btn-primary" })
+
+
+        </div>
+
+    </div>
+
+</div>
+

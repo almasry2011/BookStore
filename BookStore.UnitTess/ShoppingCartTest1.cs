@@ -19,7 +19,7 @@ namespace BookStore.UnitTess
             Cart cart = new Cart();
             cart.AddItem(b1);
             cart.AddItem(b2, 2);
-            CartLine[] res1 = cart.Lines().ToArray();
+            CartLine[] res1 = cart.Lines.ToArray();
            //Assert
             Assert.AreEqual(res1[0].Book, b1);
         }
@@ -32,7 +32,7 @@ namespace BookStore.UnitTess
             cart.AddItem(b1);
             cart.AddItem(b2, 2);
             var res = cart.ComputeTotalPrice();
-            CartLine[] res1 = cart.Lines().ToArray();
+            CartLine[] res1 = cart.Lines.ToArray();
 
             //Assert
             Assert.AreEqual(res, 80);
@@ -48,7 +48,7 @@ namespace BookStore.UnitTess
             cart.AddItem(b1);
             cart.AddItem(b2);
             cart.AddItem(b1,5);
-            CartLine[] res1 = cart.Lines().ToArray();
+            CartLine[] res1 = cart.Lines.ToArray();
             //Assert
             Assert.AreEqual(res1[0].Quantity, 7);
             Assert.AreEqual(res1.Length, 2);
@@ -63,7 +63,7 @@ namespace BookStore.UnitTess
             cart.AddItem(b2);
 
             cart.RemoveItem(b1);
-            CartLine[] res1 = cart.Lines().ToArray();
+            CartLine[] res1 = cart.Lines.ToArray();
             //Assert
            
             Assert.AreEqual(res1.Length,1);
@@ -78,7 +78,7 @@ namespace BookStore.UnitTess
             cart.AddItem(b2);
 
             cart.Clear();
-            CartLine[] res1 = cart.Lines().ToArray();
+            CartLine[] res1 = cart.Lines.ToArray();
             //Assert
             Assert.AreEqual(res1.Length, 0);
         }

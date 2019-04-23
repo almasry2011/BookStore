@@ -1,0 +1,113 @@
+﻿@model IEnumerable<BookStore.Domain.Entities.Book>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@*@using (Html.BeginForm("search","admin"))*@
+
+@using (Ajax.BeginForm("search", "admin", new AjaxOptions {
+
+    UpdateTargetId = "tbl",
+    InsertionMode = InsertionMode.Replace,
+    HttpMethod="Post",
+    LoadingElementId = "img",
+    LoadingElementDuration = 1000
+}))
+{
+
+    <div >
+
+        <label>Enter Search Value : </label>
+        @*  @Html.TextBox("search")*@
+
+        <input type="text" id="text" name="search" value="search" />
+        <button type="submit">Search</button>
+
+
+    </div>
+}
+
+    <img style="display:none" id="img" src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/b6e0b072897469.5bf6e79950d23.gif" alt="Alternate Text" />
+
+    <div id="tbl"></div>
+
+
+
+@*<table  class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Titel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Specialization)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Specialization)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ISBN }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ISBN }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ISBN })
+            </td>
+        </tr>
+    }
+
+</table>*@
+    <script>
+
+//        $('#text').change(function(event){
+//	$.ajax({
+//	  	url: "/admin/search",
+//	  	type: "GET",
+//	  	data: { data : somedata }
+//	  	dataType: 'html',
+//	  	success: function(result){
+//  			$('#show-result').html(result);
+//	  	}
+//	});
+//});
+
+        $('#text').function (onchange) {
+
+            $.ajax({
+                url: '/admin/search',
+                type: 'POST',
+                success: function (responce) { alert(responce) },
+                error: function (responce) { alert(responce) }
+            });
+
+        });
+  
+
+
+
+    </script>
+

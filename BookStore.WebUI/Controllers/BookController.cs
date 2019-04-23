@@ -36,7 +36,7 @@ namespace BookStore.WebUI.Controllers
 
 
             public ActionResult List(string specialization, int page=1)
-        {
+           {
             //2-per Page
             //(2-1)*2=2
             //(3-1)*2=4
@@ -66,7 +66,7 @@ namespace BookStore.WebUI.Controllers
         }
 
 
-        public ActionResult Menu()
+        public PartialViewResult Menu()
         {
         
 

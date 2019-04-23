@@ -21,7 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <IntermediateOutputPath>C:\Users\AFF6E~1.MOH\AppData\Local\Temp\vs7125.tmp\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\AFF6E~1.MOH\AppData\Local\Temp\vsE7B5.tmp\Debug\</IntermediateOutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,7 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <IntermediateOutputPath>C:\Users\AFF6E~1.MOH\AppData\Local\Temp\vs7125.tmp\Release\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\AFF6E~1.MOH\AppData\Local\Temp\vsE7B5.tmp\Release\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -50,11 +50,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\EmailHelper.cs" />
     <Compile Include="Abstract\IBookRepository.cs" />
+    <Compile Include="Abstract\IOrderProcessor.cs" />
     <Compile Include="Concrete\EFBookRepository.cs" />
     <Compile Include="Concrete\EFDbcontext.cs" />
     <Compile Include="Entities\Cart.cs" />
     <Compile Include="Entities\MyEntities.cs" />
+    <Compile Include="Entities\ShippingDetails.cs" />
     <Compile Include="Migrations\201904121730510_FirstMigration.cs" />
     <Compile Include="Migrations\201904121730510_FirstMigration.Designer.cs">
       <DependentUpon>201904121730510_FirstMigration.cs</DependentUpon>
