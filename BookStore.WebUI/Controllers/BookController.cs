@@ -65,7 +65,7 @@ namespace BookStore.WebUI.Controllers
 
         public ActionResult Search(string search, int page = 1)
         {
-            var q = repo.Books.Where(b => b.Titel.Contains(search) || b.Description.Contains(search));
+            var q = repo.Books.Where(b => b.Titel.ToLower().Contains(search.ToLower()) || b.Description.ToLower().Contains(search.ToLower()));
             BookListViewModel m = new BookListViewModel
             {
                 PagingInfo = new PagingInfo { CurrentPage = page, ItemsPerPages = PageSize, TotalItems = repo.Books.Count() },
