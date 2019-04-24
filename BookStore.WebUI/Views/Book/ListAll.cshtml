@@ -1,8 +1,17 @@
 ﻿@model BookStore.WebUI.Models.BookListViewModel
-
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
 @{
     ViewBag.Title = "ListAll";
 }
+<style>
+    .add-on .input-group-btn > .btn {
+        border-left-width: 0;
+        left: -2px;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    }
+
+</style>
 
 <h2>ListAll</h2>
 
@@ -10,25 +19,53 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 <div class="container">
+     <br />
     <div class="row">
-        <div style="top: 104px;" class="col col-lg-3 col-md-3 col-sm-3 text-center hidden-sm hidden-md hidden-xs">
+        <div class="input-group add-on">
+            <input class="form-control pull-right " name="search" placeholder="Search" id="searchtxtid"  type="text">
+            <div class="input-group-btn">
+                <spaan class="btn btn-default" type="submit" ><span class="glyphicon glyphicon-search"></span></spaan>
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    <div class="row">
+        <div class="col col-lg-3 col-md-3 col-sm-3 text-center hidden-sm hidden-md hidden-xs">
             @Html.Partial("_Menu")
         </div>
 
-
-        <div class="col col-lg-9 col-md-9 col-sm-9">
-            @Html.Partial("_BOOKLIST")
+        <div  class="col col-lg-9 col-md-9 col-sm-9">
+           
+            <div id="allContent">
+                @*@Html.Partial("_SearchView")*@
+                @Html.Partial("_BOOKLIST")
+            </div>
 
         </div>
 
+        <br /><br /> <br /><br />
     </div>
-
-
-    <br /><br /> <br /><br />
 </div>
 
 
+<script>
+   $('#searchtxtid').keyup(function () {
+        var SearchValue = $('#searchtxtid').val();
+        $.ajax({
+            url: '/book/search/',
+            type: 'get',
+            data: { search: SearchValue },
+            success: function (result) {
+                $("#allContent").html(result);
+            }, error: function (res) {
+                alert(res);
+            }
+        });
+    });
 
 
+
+</script>
 
 

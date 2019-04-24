@@ -25,28 +25,24 @@ namespace BookStore.WebUI.Controllers
                 Books = repo.Books.OrderBy(b => b.ISBN)
                     .Skip((page - 1) * PageSize)
                     .Take(PageSize),
-                 SpecializationColl = repo.Books.Select(b => b.Specialization).Distinct()
+                SpecializationColl = repo.Books.Select(b => b.Specialization).Distinct()
 
             };
             ViewBag.listall = "list";
 
             return View("listall", m);
         }
-
-
-
-            public ActionResult List(string specialization, int page=1)
-           {
+        public ActionResult List(string specialization, int page = 1)
+        {
             //2-per Page
             //(2-1)*2=2
             //(3-1)*2=4
             ViewBag.spec = specialization;
-            var x = repo.Books.Where(b => b.Specialization == specialization).Skip((page-1)*PageSize).Take(PageSize) .Count()   ;
+            var x = repo.Books.Where(b => b.Specialization == specialization).Skip((page - 1) * PageSize).Take(PageSize).Count();
 
             BookListViewModel m = new BookListViewModel
             {
                 PagingInfo = new PagingInfo { CurrentPage = page, ItemsPerPages = PageSize, TotalItems = repo.Books.Count() },
-
                 Books = repo.Books.OrderBy(b => b.ISBN)
                 .Where(b => b.Specialization == null || b.Specialization == specialization)
                 .Skip((page - 1) * PageSize)
@@ -55,33 +51,33 @@ namespace BookStore.WebUI.Controllers
 
                 SearchPagesNumber = x,
                 SpecializationColl = repo.Books.Select(b => b.Specialization).Distinct()
-
             };
-
-
-            return View("listall",m );
-
-
-
+            return View("listall", m);
         }
-
-
         public PartialViewResult Menu()
         {
-        
-
             BookListViewModel m = new BookListViewModel
             {
-               SpecializationColl = repo.Books.Select(b => b.Specialization ).Distinct()
+                SpecializationColl = repo.Books.Select(b => b.Specialization).Distinct()
             };
-            return PartialView( "_CustomNav",m);
+            return PartialView("_CustomNav", m);
         }
 
+        public ActionResult Search(string search, int page = 1)
+        {
+            var q = repo.Books.Where(b => b.Titel.Contains(search) || b.Description.Contains(search));
+            BookListViewModel m = new BookListViewModel
+            {
+                PagingInfo = new PagingInfo { CurrentPage = page, ItemsPerPages = PageSize, TotalItems = repo.Books.Count() },
+                Books = (q.OrderBy(b => b.ISBN)),
+                SpecializationColl = repo.Books.Select(b => b.Specialization).Distinct()
+            };
+            return PartialView("_booklist", m);
+        }
 
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }

@@ -1,13 +1,5 @@
 ﻿@model BookStore.WebUI.Models.BookListViewModel
-
-@{
-    ViewBag.Title = "Book list";
-}
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
-<h2>Book list</h2>
-
- 
-
 <style>
 
     .alert {
@@ -21,16 +13,12 @@
     .myspan {
     }
 </style>
-<br />
-<span class="label label-primary">@Model.SearchPagesNumber</span>
 
-
-<br />
 @foreach (var item in Model.Books)
 {
     string divhidenid = item.ISBN + "divid";
     string alertid = item.ISBN + "alertid";
-    <div class="well" style="padding-bottom:50px;">
+    <div class="well" style="padding-bottom:50px; ">
         <h3>
             <strong class="text-primary"> @item.Titel  </strong>
 
@@ -38,8 +26,6 @@
             <span id="h" class="pull-right label label-primary">@item.Price.ToString("C") </span>
         </h3>
         <span class="lead">@item.Description</span>
-
-
 
         <div>
             <div id="@divhidenid" class="col-lg-9" style="display:none">
@@ -104,16 +90,14 @@
 
     }
 
-
-
 </div>
 
-<a class="btn btn-primary" href=" @Url.Action("Contact","book") "> content </a>
+
+
 
 <script>
 
     function success() {
-
         $(document).ready(function () {
             $.ajax({
                 url: "/cart/CartSummerty",
@@ -125,9 +109,7 @@
                     $(".myspan").text("Successful added");
                 });
         });
-
     }
-
 
     function faild() {
         $(document).ready(function () {
@@ -135,19 +117,5 @@
             $(".myspan").text("Failed to add");
         });
     }
-
-
-    
-
-    $('.pull-right.label.label-primary').hover(function () {
-        $(this).focus();
-        $(this).addClass(" view overlay zoom")
-       // alert("");
-        });
-
-     
-
-
-
 
 </script>

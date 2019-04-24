@@ -7,24 +7,21 @@ using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using BookStore.Domain.Entities;
-
+ 
 namespace BookStore.Domain.Abstract
 {
    public class SendEmail  :IOrderProcessor
     {
         private MailSettings ESettings = new MailSettings();
-
-       
         public void ProcessOrderMail()
         {
-            
             MailMessage mail = new MailMessage();
             SmtpClient SmtpServer = new SmtpClient();
             mail.To.Add(ESettings.MailToAdress);
-            mail.From = new MailAddress(ESettings.MailFromAdress); //new MailAddress("mail@domain.com");
+            mail.From = new MailAddress(ESettings.MailFromAdress);
             mail.Subject = "New Order Has Been Submitted";
             mail.IsBodyHtml = true;
-            using (StreamReader reader = File.OpenText( @"C:\Users\a.mohamed\Desktop\usb_driver\BookStore\BookStore.WebUI\Views\Cart\EmailTemplete.cshtml "))
+            using (StreamReader reader = File.OpenText( @"E:\00\ASP.NET\MVC5\AS\BookStore\BookStore.WebUI\Views\Cart\EmailTemplete.cshtml "))
             {  mail.Body = reader.ReadToEnd(); }                                               
             SmtpServer.Host = ESettings.ServerName;
             SmtpServer.Port = ESettings.ServerPort;

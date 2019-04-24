@@ -59,7 +59,6 @@ namespace BookStore.WebUI.Controllers
             CartViewModel m = new CartViewModel
             {
                 cart = GetCart(),
-                //  cart = Cart00,
                 ReturnUrl = returnURL
             };
             return View("AddToCart", m); 
@@ -92,7 +91,7 @@ namespace BookStore.WebUI.Controllers
         }
         public ViewResult Checkout()
         {
-            return View(new ShippingDetails()); //return View("AddToCart", m);
+            return View(new ShippingDetails()); 
         }
         public ActionResult EmailTemplete(ShippingDetails shippingDetails)
         {
@@ -119,7 +118,7 @@ namespace BookStore.WebUI.Controllers
 
         //    return Content("_CartSummerty" );
         //}
- 
+
 
     }
 }
