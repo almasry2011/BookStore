@@ -1,5 +1,6 @@
 ﻿using BookStore.Domain.Abstract;
 using BookStore.Domain.Entities;
+using BookStore.WebUI.HtmlHelper;
 using BookStore.WebUI.Models;
 using System;
 using System.Collections.Generic;
@@ -79,7 +80,9 @@ namespace BookStore.WebUI.Controllers
             }
             if (ModelState.IsValid)
                 {
-              Repo_Order.ProcessOrderMail();
+                MailBody MB = new MailBody();
+                var body = MB.Body(cartModel);
+               Repo_Order.ProcessOrderMail(body);
                 //cartModel.cart.Clear();
                 return View("EmailTemplete", cartModel);
             }

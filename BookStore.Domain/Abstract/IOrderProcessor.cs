@@ -11,7 +11,7 @@ namespace BookStore.Domain.Abstract
 {
    public interface IOrderProcessor
     {
-        void ProcessOrderMail();
+        void ProcessOrderMail(string body);
     }
 
 }
