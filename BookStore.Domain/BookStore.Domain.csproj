@@ -70,6 +70,10 @@
     <Compile Include="Migrations\201904140809287_PopulateBooks1.Designer.cs">
       <DependentUpon>201904140809287_PopulateBooks1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904251020593_AddImageToBookClass.cs" />
+    <Compile Include="Migrations\201904251020593_AddImageToBookClass.Designer.cs">
+      <DependentUpon>201904251020593_AddImageToBookClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -86,6 +90,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904140809287_PopulateBooks1.resx">
       <DependentUpon>201904140809287_PopulateBooks1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904251020593_AddImageToBookClass.resx">
+      <DependentUpon>201904251020593_AddImageToBookClass.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
