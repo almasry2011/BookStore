@@ -20,7 +20,6 @@ namespace BookStore.WebUI.Controllers
         // GET: Admin
         public ActionResult Index()
         {
-            ViewBag.path = Server.MapPath("~/Bookimages");
             return View(db.Books.ToList());
         }
 
@@ -92,9 +91,6 @@ namespace BookStore.WebUI.Controllers
                     Bookimage = book.ISBN + ".png";
                     string path = Path.Combine(Server.MapPath("~/Bookimages"), Path.GetFileName(Bookimage));
                     ImgFile.SaveAs(path);
-
-
-
                 }
                 ViewBag.FileStatus = "File uploaded successfully.";
             }
@@ -102,10 +98,6 @@ namespace BookStore.WebUI.Controllers
             {
                 ViewBag.FileStatus = "Error while file uploading."; ;
             }
-
-
-
-
             if (ModelState.IsValid)
             {
                 var ModBook = db.Books.Find(book.ISBN);
@@ -115,12 +107,10 @@ namespace BookStore.WebUI.Controllers
                 ModBook.Titel = book.Titel;
                 ModBook.Price = book.Price;
                 db.SaveChanges();
-                //db.Entry(book).State = EntityState.Modified;
-
-
                 return RedirectToAction("Index");
             }
             return View(book);
+          
         }
 
         // GET: Admin/Delete/5

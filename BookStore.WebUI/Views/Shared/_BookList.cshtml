@@ -11,6 +11,8 @@
     }
 
     .myspan {
+        text-wrap:normal;
+        font-size:10px;
     }
 </style>
 
@@ -20,22 +22,19 @@
     string alertid = item.ISBN + "alertid";
     <div class="well" style="padding-bottom:50px; ">
         <h3>
+            <img style="width:80px;height:80px" class="img-rounded" src=" ../../Bookimages/@item.ImgagePath    " alt="Alternate Text" />
             <strong class="text-primary"> @item.Titel  </strong>
-
-
-            <span id="h" class="pull-right label label-primary">@item.Price.ToString("C") </span>
+            <span class="pull-right label label-primary">@item.Price.ToString("C") </span>
         </h3>
-        <span class="lead">@item.Description</span>
-
         <div>
-            <div id="@divhidenid" class="col-lg-9" style="display:none">
+            <div id="@divhidenid" class="col-lg-5" style="display:none">
                 <div class="col-lg-1"> <img style="height:30px;width:30px" src="~/IMG/background-transparent-loading-3.gif" /></div>
-                <div id="@alertid" class="alert text-center col-lg-8">
+                <div style=" font-size:10px; text-align:left " id="@alertid" class="alert text-center ">
                     <strong>@item.Titel <span class="myspan"></span></strong>
                 </div>
-
             </div>
-            <div class="col-lg-3 pull-right">
+            <span style="text-wrap:normal" class="lead col-lg-4">@item.Description</span>
+            <div class="col-lg-1 pull-right">
 
                 @using (Ajax.BeginForm("AddToCart", "Cart", new AjaxOptions
                 {
@@ -52,6 +51,7 @@
                     <div class="pull-right btn-sm ">
                         @Html.HiddenFor(b => item.ISBN, new { Name = "ISBN" })
                         @Html.Hidden("returnURL0", Request.Url.PathAndQuery)
+
                         <input class="btn btn-success lead" data-allert-id="@alertid" type="submit" value="Add_To_Cart" />
                     </div>
                 }

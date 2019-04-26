@@ -15,8 +15,8 @@
     }
 </style>
 
-@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
-            {
+@using (Html.BeginForm("edit", "admin", FormMethod.Post, new { enctype = "multipart/form-data" } ))
+{
                 @Html.AntiForgeryToken()
 
                 <div class="form-horizontal col-lg-5">
@@ -74,22 +74,12 @@
             </div>
         </div>
     </div>
-    <div class="form-horizontal col-lg-4">
-        <br /><br /><br /><br />
-        <img class="img-circle" id="img" src="    " alt="Alternate Text" />
-        <br /> <br />
-         @*<input id="ImgageFile" type="file" name="ImgageFile" value="" />*@
-
-        @*@Html.ValidationMessageFor(model => model.ImgagePath, "", new { @class = "text-danger" })*@
-
-        <input type="file" name="ImgFile" id="ImgFile" style="width: 100%;" />  
-
-
-
-        @*@Html.EditorFor(model => model.ImgagePath, new { htmlAttributes = new { @class = "form-control" } })
-        *@
-
-    </div>
+                <div class="form-horizontal col-lg-4">
+                    <br /><br /><br /><br />
+                    <img class="img-circle" id="img" src="../../Bookimages/@Model.ImgagePath     " alt="Alternate Text" />
+                    <br /> <br />
+                    <input type="file" name="ImgFile" id="ImgFile" style="width: 100%;" />
+                </div>
 }
 
 <div>

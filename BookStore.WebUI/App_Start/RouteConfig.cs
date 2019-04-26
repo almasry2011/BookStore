@@ -15,17 +15,17 @@ namespace BookStore.WebUI
 
 
 
-        //localhost:xxxx/Programming
-        //routes.MapRoute(
-        //           null, "scart/{returnURL}/{cart}", new
-        //           {
-        //               controller = "cart",
-        //               action = "index",
-        //               cart = Equals("cart", "scart0")
+            //localhost:xxxx/Programming
+            //routes.MapRoute(
+            //           null, "scart/{returnURL}/{cart}", new
+            //           {
+            //               controller = "cart",
+            //               action = "index",
+            //               cart = Equals("cart", "scart0")
 
-        //           });
+            //           });
 
-       // localhost: xxxx / Programming
+            // localhost: xxxx / Programming
             routes.MapRoute(
                        null, "{specialization}", new
                        {
@@ -43,18 +43,6 @@ namespace BookStore.WebUI
                            action = "ListAll",
                        });
 
-            //localhost:xxxx/3
-            routes.MapRoute(
-                     null, "{page}",
-
-                     new
-                     {
-                         controller = "book",
-                         action = "ListAll",
-                         page = UrlParameter.Optional
-                     },
-                        new { page = @"\d+" }         // The regular expression \d + matches one or more integers.
-                      );
 
 
 
